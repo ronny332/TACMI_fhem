@@ -6,9 +6,9 @@ require(__base + 'lib/config');
 require(__base + 'lib/init');
 require(__base + 'lib/cmi.server');
 require(__base + 'lib/cmi.message');
-const cmiData = require(__base + 'lib/cmi.data');
-require(__base + 'lib/fhem.telnet.client')(cmiData.data);
-require(__base + 'lib/fhem.telnet.server')(cmiData.data);
+const cmiData = require(__base + 'lib/cmi.data'),
+  client = require(__base + 'lib/fhem.telnet.client')(cmiData.data);
+require(__base + 'lib/fhem.telnet.server')(cmiData.data, client);
 require(__base + 'lib/states.load')(cmiData.data);
 require(__base + 'lib/states.store')(cmiData.data);
 
